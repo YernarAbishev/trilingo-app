@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static './css/style.css' %}">
+</head>
+<body>
+    <header class="header">
+        <div class="container d-flex align-items-center space-between">
+            <a href="{% url 'home_page' %}" class="logo"><img src="{% static './images/logo.jpg' %}" alt="Logo"></a>
+            <a href="{% url 'admin:index' %}" target="_blank" class="button-primary">Панель администратора</a>
+        </div>
+    </header>
+    <main class="main">
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer class="footer">
+        <div class="container">
+            &copy; 2024. Trilingo
+        </div>
+    </footer>
+
+
+    <script src="{% static './js/letter-choice.js' %}"></script>
+</body>
+</html>

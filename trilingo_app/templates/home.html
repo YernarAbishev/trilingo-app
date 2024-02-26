@@ -1,0 +1,16 @@
+{% extends './base.html' %}
+
+{% block title %}Trilingo{% endblock %}
+
+{% block content %}
+<section class="block">
+    <div class="container">
+        <h1 class="title">Выберите класс</h1>
+        <div class="d-flex align-items-center space-around">
+            {% for working_class in working_classes %}
+            <a href="{% url 'themes_page' slug=working_class.slug %}" class="button-primary button-large">{{ working_class.name }}</a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

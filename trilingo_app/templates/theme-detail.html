@@ -1,0 +1,69 @@
+{% extends './base.html' %}
+
+{% block title %}{{ theme.word_kz }} - {{ theme.word_ru }} - {{ theme.word_en }}{% endblock %}
+
+{% block content %}
+<section class="block">
+    <div class="container">
+        <div class="d-flex align-items-center space-between" style="margin-bottom: 20px;">
+            <a href="{% url 'themes_page' slug=theme.working_class.slug %}" class="button-danger">Назад</a>
+            <a href="{% url 'alphabets_kz_page' %}" class="button-primary">Алфавит KZ</a>
+            <a href="{% url 'alphabets_ru_page' %}" class="button-primary">Алфавит RU</a>
+            <a href="{% url 'alphabets_en_page' %}" class="button-primary">Алфавит EN</a>
+            <ul class="langs-nav">
+                <li class="langs-nav-item">
+                    <a href="#" class="emoji-sm">🇰🇿</a>
+                </li>
+                <li class="langs-nav-item">
+                    <a href="#" class="emoji-sm">🇷🇺</a>
+                </li>
+                <li class="langs-nav-item">
+                    <a href="#" class="emoji-sm">🇬🇧</a>
+                </li>
+            </ul>
+        </div>
+        <h1 class="title">{{ theme.word_kz }} - {{ theme.word_ru }} - {{ theme.word_en }}</h1>
+        <div class="theme-detail-row">
+            {% for word in words %}
+            <div class="theme-detail-col">
+                <div class="letters-full-data">
+                    <div class="letter-img">
+                        <img src="{{ word.image.url }}" alt="{{ word.theme.word_kz }} - {{ word.theme.word_ru }} - {{ word.theme.word_en }}">
+                    </div>
+                    <div class="letter-theme-detail">
+                        <div class="letter" id="kz">{{ word.word_kz.word }}</div>
+                        <div class="subletter">{{ word.word_kz.subword }}</div>
+                        <div class="description">{{ word.word_kz.description }}</div>
+                        <div class="audio">
+                            <audio controls>
+                                <source src="{{ word.word_kz.voice.url }}" type="audio/mpeg" />
+                            </audio>
+                        </div>
+                    </div>
+                    <div class="letter-theme-detail">
+                        <div class="letter" id="ru">{{ word.word_ru.word }}</div>
+                        <div class="subletter">{{ word.word_ru.subword }}</div>
+                        <div class="description">{{ word.word_ru.description }}</div>
+                        <div class="audio">
+                            <audio controls>
+                                <source src="{{ word.word_ru.voice.url }}" type="audio/mpeg" />
+                            </audio>
+                        </div>
+                    </div>
+                    <div class="letter-theme-detail">
+                        <div class="letter" id="en">{{ word.word_en.word }}</div>
+                        <div class="subletter">{{ word.word_en.subword }}</div>
+                        <div class="description">{{ word.word_en.description }}</div>
+                        <div class="audio">
+                            <audio controls>
+                                <source src="{{ word.word_en.voice.url }}" type="audio/mpeg" />
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

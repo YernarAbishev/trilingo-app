@@ -1,0 +1,20 @@
+{% extends './base.html' %}
+
+{% block title %}Қазақша алфавит{% endblock %}
+
+
+{% block content %}
+<section class="block">
+    <div class="container">
+        <a href="{% url 'home_page' %}" class="button-danger">Назад</a>
+        <h1 class="title">Қазақша</h1>
+        <div class="alphabet-row">
+            {% for alphabet in alphabets %}
+            <a href="{% url 'filter_by_kz_page' slug=alphabet.slug %}" class="alphabet-col">
+                <img src="{{ alphabet.image.url }}" alt="{{ alphabet.name }}">
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

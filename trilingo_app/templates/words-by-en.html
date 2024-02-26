@@ -1,0 +1,35 @@
+{% extends './base.html' %}
+
+{% block title %}Алфавит бойынша сөдер{% endblock %}
+
+{% block content %}
+<section class="block">
+    <div class="container">
+        <div class="d-flex align-items-center space-between" style="margin-bottom: 20px;">
+            <a href="{% url 'home_page' %}" class="button-danger">Назад</a>
+            <a href="{% url 'alphabets_kz_page' %}" class="button-primary">Алфавит KZ</a>
+            <a href="{% url 'alphabets_ru_page' %}" class="button-primary">Алфавит RU</a>
+            <a href="{% url 'alphabets_en_page' %}" class="button-primary">Алфавит EN</a>
+        </div>
+        <div class="theme-detail-row">
+            {% for word in words %}
+            <div class="theme-detail-col">
+                <div class="letters-full-data">
+                    <div class="letter-theme-detail">
+                        <div class="letter">{{ word.word }}</div>
+                        <div class="subletter">{{ word.subword }}</div>
+                        <div class="description">{{ word.description }}</div>
+                        <div class="audio">
+                            <audio controls>
+                                <source src="{{ word.voice.url }}" type="audio/mpeg" />
+                            </audio>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

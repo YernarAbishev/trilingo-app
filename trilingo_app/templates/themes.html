@@ -1,0 +1,36 @@
+{% extends './base.html' %}
+{% load static %}
+{% block title %}Темы{% endblock %}
+
+{% block content %}
+<section class="block">
+    <div class="container">
+        <div class="d-flex align-items-center space-between">
+            <a href="{% url 'home_page' %}" class="button-danger">Назад</a>
+            <a href="{% url 'alphabets_kz_page' %}" class="button-primary">Алфавит KZ</a>
+            <a href="{% url 'alphabets_ru_page' %}" class="button-primary">Алфавит RU</a>
+            <a href="{% url 'alphabets_en_page' %}" class="button-primary">Алфавит EN</a>
+        </div>
+        <h1 class="title">{{ working_class.name }}</h1>
+        <div class="theme-list">
+            {% for theme in themes %}
+            <a href="{% url 'theme_detail_page' slug=theme.slug %}" class="theme-item">
+                <div class="themes-row">
+                    <div class="themes-text">
+                        <h3>{{ theme.word_kz }}</h3>
+                    </div>
+                    <div class="themes-text">
+                        <h3>{{ theme.word_ru }}</h3>
+                    </div>
+                    <div class="themes-text">
+                        <h3>{{ theme.word_en }}</h3>
+                    </div>
+                </div>
+            </a>  
+            {% endfor %} 
+        </div>
+    </div>
+</section>
+<script src="{% static './js/search-theme.js' %}"></script>
+
+{% endblock %}
